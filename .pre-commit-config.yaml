@@ -1,0 +1,35 @@
+repos:
+  - repo: https://github.com/ambv/black
+    rev: 20.8b1
+    hooks:
+      - id: black
+        language_version: python3
+  - repo: https://github.com/myint/autoflake
+    rev: b330072a26bb13aea8843f8083cee5332d71f78f
+    hooks:
+      - id: autoflake
+        language: python
+        args:
+          [
+            "--in-place",
+            "--remove-all-unused-imports",
+            "--remove-unused-variables",
+          ]
+  - repo: https://github.com/pycqa/isort
+    rev: 5.5.2
+    hooks:
+      - id: isort
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 3.8.4
+    hooks:
+      - id: flake8
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 5118faa7173b0e5bbc230c4adf628758e13605bf
+    hooks:
+      - id: pydocstyle
+        files: ^dataqualityreport/
+        args:
+          [
+            "--ignore=D100,D101,D104,D203,D213,D406,D407,D408,D409,D413",
+            "--add-select=D417",
+          ]

@@ -1,0 +1,57 @@
+[tool.poetry]
+authors = ["Devjit Chakravarti <devjit.chakravarti@doordash.com>"]
+classifiers = [
+  "Topic :: Software Development :: Libraries :: Python Modules",
+]
+description = "Data Quality Report - visual data profiling for python"
+documentation = ""
+keywords = ["utilities"]
+name = "DataQualityReport"
+version = "0.0.3"
+
+
+[tool.poetry.dependencies]
+python = ">=3.7.1 <3.10"
+
+joblib = "*"
+pandas = "^1.1.5"
+numpy = "^1.20"
+matplotlib = "^3.5.0"
+Jinja2 = "^3.1.1"
+pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+
+[tool.poetry.dev-dependencies]
+# please non-critical dependencies in here
+autopep8 = "*"
+black = "*"
+flake8 = "*"
+isort = "*"
+mypy = "*"
+pre-commit = "2.5"
+
+[tool.black]
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | build
+    | dist
+  )/
+  | foo.py           # also separately exclude a file named foo.py in
+                     # the root of the project
+)
+'''
+include = '\.pyi?$'
+line-length = 120
+target-version = ['py37']
+
+[build-system]
+build-backend = "poetry.masonry.api"
+requires = ["poetry>=1.1.8"]
