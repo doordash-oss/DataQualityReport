@@ -1,0 +1,42 @@
+---
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  POETRY_HOME: /opt/poetry
+  POETRY_VERSION: 1.1.12
+
+jobs:
+  unittest:
+    name: Unittest
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python: ["3.7", "3.8", "3.9", "3.10"]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Python ${{ matrix.python }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Install Poetry
+        run: |
+          echo "$POETRY_HOME/bin" >> $GITHUB_PATH
+          curl -sSL https://install.python-poetry.org | python -
+      
+      - name: Install Dependencies
+        run: |
+          poetry install
+          echo "$(poetry env info --path)/bin" >> $GITHUB_PATH
+      
+      - name: Pytest
+        run: poetry pytest
