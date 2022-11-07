@@ -19,7 +19,7 @@ lint-docker:
 	docker run --rm -i hadolint/hadolint < Dockerfile
 
 unittest:
-	pytest
+	poetry run pytest
 
 make notebook:
 	poetry run jupyter notebook
