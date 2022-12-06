@@ -7,7 +7,7 @@ description = "Data Quality Report - visual data profiling for python"
 documentation = ""
 keywords = ["utilities"]
 name = "DataQualityReport"
-version = "0.0.3"
+version = "0.0.4"
 
 
 [tool.poetry.dependencies]
